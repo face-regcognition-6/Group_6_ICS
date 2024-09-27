@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>购物奖励</title>
+		<link href="/static/css/layui.css" rel="stylesheet">
+        <style>
+			#fontSizeSliderContainer {
+				padding: 10px;
+				text-align: center;
+			}
+
+			.layui-nav-child dd {
+				padding: 10px 20px;
+			}
+		</style>
+            <link rel="shortcut icon" type="image/x-icon" href="/static/img/logo.ico"/>
+	</head>
+	<body>
+		<ul class="layui-nav">
+			<li class="layui-nav-item">
+				<img alt="50x50" src="/static/img/logo-big-w.png" width=100% height=30pt />
+			</li>
+			<li class="layui-nav-item">
+				<a href="../">主页</a>
+			</li>
+			<li class="layui-nav-item">
+				<a href="javascript:;">分类</a>
+				<dl class="layui-nav-child">
+						<dd><a href="good2">兰花</a></dd>
+					<dd><a href="good1">玫瑰</a></dd>
+					<dd><a href="good3">牡丹</a></dd>
+					<dd><a href="good4">康乃馨</a></dd>
+					<dd><a href="good5">洋桔梗</a></dd>
+				</dl>
+			</li>
+			<li class="layui-nav-item">
+				<a href="">购物奖励</a>
+			</li>
+            <li class="layui-nav-item">
+				<a href="javascript:;">个性化设置</a>
+				<dl class="layui-nav-child" style="color: black; text-align: center;">
+					<dd>
+						<div id="fontSizeSliderContainer">
+							<label for="fontSizeSlider">调整字体大小:</label>
+							<input type="range" id="fontSizeSlider" min="50" max="200" value="115">
+						</div>
+					</dd>
+				</dl>
+			</li>
+		</ul>
+
+		<div id='content'style="padding: 10px 350px 10px 350px; font-size: 125%;">
+			<div class="layui-tab" lay-filter="test-hash">
+				<ul class="layui-tab-title">
+					<li class="layui-this" lay-id="11">积分记录</li>
+					<li lay-id="22">积分兑换</li>
+					<li lay-id="33">积分细则</li>
+				</ul>
+				<div class="layui-tab-content">
+					<div class="layui-tab-item layui-show">
+						<div class="layui-panel layui-anim layui-anim-scale">
+							<div style="text-align: center; font-size: 100%; padding: 50px;">
+								<h2><strong>您的积分记录</strong></h2>
+								<div class="layui-col-sm6 layui-col-md6 layui-col-lg6">
+									<h6>用户名：<span id="username"></span></h6>
+								</div>
+								<div class="layui-col-sm6 layui-col-md6 layui-col-lg6">
+									<h6>当前日期：<span id="datenow"></span></h6>
+								</div>
+							</div>
+							<div style="padding: 0 50px 50px 50px;">
+								<table class="layui-table">
+									<colgroup>
+										<col width="150">
+										<col width="150">
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>商品</th>
+											<th>获取积分</th>
+											<th>详情图</th>
+										</tr>
+									</thead>
+									<tbody>
+                                     {% for user in data %}
+                                     <tr>
+                                     <td>{{ user.name }}</td>
+                                         <td>{{ user.point }}</td>
+                                         <td><img src= {{user.src}} /></td>
+                                     </tr>
+                                    {% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="layui-tab-item">
+						<div class="layui-row layui-col-space10" style="text-align: center; align-items: center;">
+							<ul>
+
+								<div class="layui-col-sm3 layui-col-md3 layui-col-lg3 layui-anim layui-anim-scale"
+									style="padding: 10px;">
+									<div id="example-anim-usage">
+										<li style="background-color: #eaeaea; border-radius: 10px;">
+											<a href="">
+												<h3></h3><br />
+												<img alt="50x50" src="/static/img/gift.png" width="125" height="125"
+													style=" border-radius: 5px;" />
+												<h3></h3><br />
+												<h3 style="text-align: center;">敬请期待</h3>
+												<h3 style="text-align: center; color: #16baaa">积分数</h3>
+												<h3></h3><br />
+											</a>
+										</li>
+									</div>
+								</div>
+
+								<div class="layui-col-sm3 layui-col-md3 layui-col-lg3 layui-anim layui-anim-scale"
+									style="padding: 10px;">
+									<div id="example-anim-usage">
+										<li style="background-color: #eaeaea; border-radius: 10px;">
+											<a href="">
+												<h3></h3><br />
+												<img alt="50x50" src="/static/img/gift.png" width="125" height="125"
+													style=" border-radius: 5px;" />
+												<h3></h3><br />
+												<h3 style="text-align: center;">敬请期待</h3>
+												<h3 style="text-align: center; color: #16baaa">积分数</h3>
+												<h3></h3><br />
+											</a>
+										</li>
+									</div>
+								</div>
+
+								<div class="layui-col-sm3 layui-col-md3 layui-col-lg3 layui-anim layui-anim-scale"
+									style="padding: 10px;">
+									<div id="example-anim-usage">
+										<li style="background-color: #eaeaea; border-radius: 10px;">
+											<a href="">
+												<h3></h3><br />
+												<img alt="50x50" src="/static/img/gift.png" width="125" height="125"
+													style=" border-radius: 5px;" />
+												<h3></h3><br />
+												<h3 style="text-align: center;">敬请期待</h3>
+												<h3 style="text-align: center; color: #16baaa">积分数</h3>
+												<h3></h3><br />
+											</a>
+										</li>
+									</div>
+								</div>
+
+								<div class="layui-col-sm3 layui-col-md3 layui-col-lg3 layui-anim layui-anim-scale"
+									style="padding: 10px;">
+									<div id="example-anim-usage">
+										<li style="background-color: #eaeaea; border-radius: 10px;">
+											<a href="">
+												<h3></h3><br />
+												<img alt="50x50" src="/static/img/gift.png" width="125" height="125"
+													style=" border-radius: 5px;" />
+												<h3></h3><br />
+												<h3 style="text-align: center;">敬请期待</h3>
+												<h3 style="text-align: center; color: #16baaa">积分数</h3>
+												<h3></h3><br />
+											</a>
+										</li>
+									</div>
+								</div>
+
+								<br />
+
+								<div class="layui-col-sm3 layui-col-md3 layui-col-lg3 layui-anim layui-anim-scale"
+									style="padding: 10px;">
+									<div id="example-anim-usage">
+										<li style="background-color: #eaeaea; border-radius: 10px;">
+											<a href="">
+												<h3></h3><br />
+												<img alt="50x50" src="/static/img/gift.png" width="125" height="125"
+													style=" border-radius: 5px;" />
+												<h3></h3><br />
+												<h3 style="text-align: center;">敬请期待</h3>
+												<h3 style="text-align: center; color: #16baaa">积分数</h3>
+												<h3></h3><br />
+											</a>
+										</li>
+									</div>
+								</div>
+
+								<div class="layui-col-sm3 layui-col-md3 layui-col-lg3 layui-anim layui-anim-scale"
+									style="padding: 10px;">
+									<div id="example-anim-usage">
+										<li style="background-color: #eaeaea; border-radius: 10px;">
+											<a href="">
+												<h3></h3><br />
+												<img alt="50x50" src="/static/img/gift.png" width="125" height="125"
+													style=" border-radius: 5px;" />
+												<h3></h3><br />
+												<h3 style="text-align: center;">敬请期待</h3>
+												<h3 style="text-align: center; color: #16baaa">积分数</h3>
+												<h3></h3><br />
+											</a>
+										</li>
+									</div>
+								</div>
+
+								<div class="layui-col-sm3 layui-col-md3 layui-col-lg3 layui-anim layui-anim-scale"
+									style="padding: 10px;">
+									<div id="example-anim-usage">
+										<li style="background-color: #eaeaea; border-radius: 10px;">
+											<a href="">
+												<h3></h3><br />
+												<img alt="50x50" src="/static/img/gift.png" width="125" height="125"
+													style=" border-radius: 5px;" />
+												<h3></h3><br />
+												<h3 style="text-align: center;">敬请期待</h3>
+												<h3 style="text-align: center; color: #16baaa">积分数</h3>
+												<h3></h3><br />
+											</a>
+										</li>
+									</div>
+								</div>
+
+								<div class="layui-col-sm3 layui-col-md3 layui-col-lg3 layui-anim layui-anim-scale"
+									style="padding: 10px;">
+									<div id="example-anim-usage">
+										<li style="background-color: #eaeaea; border-radius: 10px;">
+											<a href="">
+												<h3></h3><br />
+												<img alt="50x50" src="/static/img/gift.png" width="125" height="125"
+													style=" border-radius: 5px;" />
+												<h3></h3><br />
+												<h3 style="text-align: center;">敬请期待</h3>
+												<h3 style="text-align: center; color: #16baaa">积分数</h3>
+												<h3></h3><br />
+											</a>
+										</li>
+									</div>
+								</div>
+						</div>
+					</div>
+					<div class="layui-tab-item">
+						<div class="layui-panel layui-anim layui-anim-scale">
+							<div style="padding: 50px;">
+								<h2 style="text-align: center;"><strong>积分细则</strong></h2><br />
+								<p>积分细则第一段 积分细则第一段 积分细则第一段 积分细则第一段 积分细则第一段 积分细则第一段 积分细则第一段</p><br />
+								<p>积分细则第二段 积分细则第二段 积分细则第二段 积分细则第二段 积分细则第二段 积分细则第二段 积分细则第二段</p><br />
+								<p>积分细则第三段 积分细则第三段 积分细则第三段 积分细则第三段 积分细则第三段 积分细则第三段 积分细则第三段</p><br />
+								<p>积分细则第四段 积分细则第四段 积分细则第四段 积分细则第四段 积分细则第四段 积分细则第四段 积分细则第四段</p><br />
+								<p>积分细则第五段 积分细则第五段 积分细则第五段 积分细则第五段 积分细则第五段 积分细则第五段 积分细则第五段</p><br />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script src="/static/js/layui.js"></script>
+			<script>
+				window.onload = function() {
+					var now = new Date();
+					var year = now.getFullYear();
+					var month = ("0" + (now.getMonth() + 1)).slice(-2); // 月份从0开始，需要+1，并确保两位数格式
+					var day = ("0" + now.getDate()).slice(-2); // 确保两位数格式
+					var currentDate = year + "-" + month + "-" + day;
+					document.getElementById('datenow').innerText = currentDate;
+				}
+
+				layui.use(function() {
+					var element = layui.element;
+
+					// hash 地址定位
+					var hashName = 'tabid'; // hash 名称
+					var layid = location.hash.replace(new RegExp('^#' + hashName + '='), ''); // 获取 lay-id 值
+
+					// 初始切换
+					element.tabChange('test-hash', layid);
+					// 切换事件
+					element.on('tab(test-hash)', function(obj) {
+						location.hash = hashName + '=' + this.getAttribute('lay-id');
+					});
+                    var fontSizeSlider = document.getElementById('fontSizeSlider');
+				var contentDiv = document.getElementById('content');
+				var demoDiv = document.getElementById('demo');
+
+				fontSizeSlider.addEventListener('input', function() {
+					var newSize = fontSizeSlider.value + '%';
+					contentDiv.style.fontSize = newSize;
+					demoDiv.style.fontSize = newSize;
+				});
+				});
+			</script>
+
+	</body>
+</html>
