@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.contrib.auth.hashers import make_password
+from django.utils import timezone
 
 
 class AuthGroup(models.Model):
@@ -140,13 +141,6 @@ class Point(models.Model):
         db_table = 'point'
 
 
-# class TestTable(models.Model):
-#     name = models.CharField(max_length=50)
-#     age = models.IntegerField()
-
-#     class Meta:
-#         db_table = 'test_table'
-
 class User(models.Model):
     id = models.CharField(max_length=36, primary_key=True, unique=True)
     name = models.CharField(max_length=255, null=True, blank=True)
@@ -155,10 +149,15 @@ class User(models.Model):
     mail = models.EmailField(max_length=120, null=True, blank=True)
     age = models.IntegerField(null=True, blank=True)
     face_data = models.TextField(null=True, blank=True)
-    password = models.CharField(max_length=128)  # 新增字段，用于存储加密后的密码
+    password = models.CharField(max_length=128)
 
+    # 手动添加 last_login 字段
+    last_login = models.DateTimeField(null=True, blank=True)
+
+    def update_last_login(self):
+        """更新 last_login 字段为当前时间"""
+        self.last_login = timezone.now()
+        self.save()
+        
     class Meta:
         db_table = 'login_user'
-
-    def set_password(self, raw_password):
-        self.password = make_password(raw_password)

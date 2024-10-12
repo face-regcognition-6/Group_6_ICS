@@ -46,8 +46,10 @@
         </div>
         {% endif %}
 
-        <form class="layui-form" action="" method="post" style="background-color: #eaeaea; padding: 10pt;">
+        <!-- 注册表单 -->
+        <form class="layui-form" action="" method="post" enctype="multipart/form-data" style="background-color: #eaeaea; padding: 10pt;">
             {% csrf_token %}
+            
             <!-- 学号输入框 -->
             <div class="layui-form-item" style="padding: 10pt;">
                 <label class="layui-form-label">学号</label>
@@ -55,56 +57,72 @@
                     <input type="text" name="student_id" lay-verify="required" placeholder="请输入学号" autocomplete="off" class="layui-input">
                 </div>
             </div>
+            
+            <!-- 用户名输入框 -->
             <div class="layui-form-item" style="padding: 10pt;">
                 <label class="layui-form-label">用户名</label>
                 <div class="layui-input-block">
-                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                    <input type="text" name="username" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                 </div>
             </div>
+
+            <!-- 密码输入框 -->
             <div class="layui-form-item" style="padding: 10pt;">
                 <label class="layui-form-label">密码</label>
                 <div class="layui-input-inline layui-input-wrap">
-                    <input type="password" name="password" lay-verify="required|pass" placeholder="请输入" autocomplete="off" lay-affix="eye" class="layui-input">
+                    <input type="password" name="password" lay-verify="required|pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-text-em">6 到 12 位字符</div>
             </div>
+            
+            <!-- 邮箱输入框 -->
             <div class="layui-form-item" style="padding: 10pt;">
                 <label class="layui-form-label">邮箱</label>
                 <div class="layui-input-block">
                     <input type="email" name="mail" lay-verify="required|email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
                 </div>
             </div>
+
+            <!-- 电话号码输入框 -->
             <div class="layui-form-item" style="padding: 10pt;">
                 <label class="layui-form-label">电话号码</label>
                 <div class="layui-input-block">
                     <input type="text" name="telephoneNo" lay-verify="required|phone" placeholder="请输入电话号码" autocomplete="off" class="layui-input">
                 </div>
             </div>
+            
+            <!-- 性别选择框 -->
             <div class="layui-form-item" style="padding: 10pt;">
-				<label class="layui-form-label">性别</label>
-				<div class="layui-input-block">
-					<input type="radio" name="gender" value="男" id="gender_male" class="layui-radio">
-					<label for="gender_male" style="display: inline-block; margin-right: 20px;">男</label>
-					
-					<input type="radio" name="gender" value="女" id="gender_female" class="layui-radio">
-					<label for="gender_female" style="display: inline-block; margin-right: 20px;">女</label>
-					
-					<input type="radio" name="gender" value="其他" id="gender_other" class="layui-radio" checked>
-					<label for="gender_other" style="display: inline-block;">其他</label>
-				</div>
-			</div>			
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="gender" value="男" id="gender_male" class="layui-radio">
+                    <label for="gender_male" style="display: inline-block; margin-right: 20px;">男</label>
+                    
+                    <input type="radio" name="gender" value="女" id="gender_female" class="layui-radio">
+                    <label for="gender_female" style="display: inline-block; margin-right: 20px;">女</label>
+                    
+                    <input type="radio" name="gender" value="其他" id="gender_other" class="layui-radio" checked>
+                    <label for="gender_other" style="display: inline-block;">其他</label>
+                </div>
+            </div>
+            
+            <!-- 年龄输入框 -->
             <div class="layui-form-item" style="padding: 10pt;">
                 <label class="layui-form-label">年龄</label>
                 <div class="layui-input-block">
                     <input type="number" name="age" lay-verify="required|number" placeholder="请输入年龄" autocomplete="off" class="layui-input">
                 </div>
             </div>
+
+            <!-- 上传照片 -->
             <div class="layui-form-item" style="padding: 10pt;">
-                <label class="layui-form-label">上传照片</label>
+                <label for="profile_picture" class="layui-form-label">上传照片</label>
                 <div class="layui-input-block">
-                    <input type="file" name="profile_picture" accept="image/*">
+                    <input type="file" name="profile_picture" accept="image/*" required><br>
                 </div>
             </div>
+            
+            <!-- 提交和重置按钮 -->
             <div class="layui-form-item" style="padding: 10pt;">
                 <div class="layui-input-block">
                     <button type="submit" class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
