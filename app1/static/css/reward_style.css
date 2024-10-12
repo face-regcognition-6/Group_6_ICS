@@ -1,0 +1,33 @@
+/* 设置每个商品卡片的宽度和高度一致 */
+.layui-col-sm3 {
+    width: 200px;  /* 设置统一的宽度 */
+    height: 300px; /* 设置统一的高度 */
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 添加阴影美化 */
+    display: inline-block;
+    margin: 10px;
+}
+
+/* 对卡片内部的图片进行样式调整，使其比例适应容器 */
+.layui-col-sm3 img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* 确保图片大小一致并保持比例 */
+    margin-bottom: 10px;
+}
+
+/* 调整标题和积分描述的字体样式 */
+.layui-col-sm3 h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* 让兑换按钮有更醒目的颜色 */
+.layui-col-sm3 h3 + h3 {
+    font-size: 14px;
+    color: #16baaa;
+}

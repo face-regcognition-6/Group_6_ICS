@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>购物奖励</title>
+    <link href="/static/css/layui.css" rel="stylesheet">
+    <style>
+        #fontSizeSliderContainer {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .layui-nav-child dd {
+            padding: 10px 20px;
+        }
+
+    </style>
+	<link href="/static/css/reward_style.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img/logo.ico" />
+</head>
+
+<body>
+    <ul class="layui-nav">
+        <li class="layui-nav-item">
+            <img alt="50x50" src="/static/img/logo-big-w.png" width=100% height=30pt />
+        </li>
+        <li class="layui-nav-item">
+            <a href="../">主页</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">分类</a>
+            <dl class="layui-nav-child">
+                <dd><a href="good2">兰花</a></dd>
+                <dd><a href="good1">玫瑰</a></dd>
+                <dd><a href="good3">牡丹</a></dd>
+                <dd><a href="good4">康乃馨</a></dd>
+                <dd><a href="good5">洋桔梗</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="">购物奖励</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">个性化设置</a>
+            <dl class="layui-nav-child" style="color: black; text-align: center;">
+                <dd>
+                    <div id="fontSizeSliderContainer">
+                        <label for="fontSizeSlider">调整字体大小:</label>
+                        <input type="range" id="fontSizeSlider" min="50" max="200" value="115">
+                    </div>
+                </dd>
+            </dl>
+        </li>
+    </ul>
+
+    <div id='content' style="padding: 10px 350px 10px 350px; font-size: 125%;">
+        <div class="layui-tab" lay-filter="test-hash">
+            <ul class="layui-tab-title">
+                <li class="layui-this" lay-id="11">积分记录</li>
+                <li lay-id="22">积分兑换</li>
+                <li lay-id="33">积分细则</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-panel layui-anim layui-anim-scale">
+                        <div style="text-align: center; font-size: 100%; padding: 50px;">
+                            <h2><strong>您的积分记录</strong></h2>
+                            <div class="layui-col-sm6 layui-col-md6 layui-col-lg6">
+                                <h6>用户名：<span id="username"></span></h6>
+                            </div>
+                            <div class="layui-col-sm6 layui-col-md6 layui-col-lg6">
+                                <h6>当前日期：<span id="datenow"></span></h6>
+                            </div>
+                        </div>
+                        <div style="padding: 0 50px 50px 50px;">
+                            <table class="layui-table">
+                                <colgroup>
+                                    <col width="150">
+                                    <col width="150">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>商品</th>
+                                        <th>获取积分</th>
+                                        <th>详情图</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in data %}
+                                    <tr>
+                                        <td>{{ user.name }}</td>
+                                        <td>{{ user.point }}</td>
+                                        <td><img src={{user.src}} /></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-row layui-col-space10" style="text-align: center; align-items: center;">
+						<ul>
+							<!-- 鲜花订单10%折扣券 -->
+							<div class="layui-col-sm3">
+								<li>
+									<a href="javascript:void(0)" onclick="redeemGift('1')">
+										<h3>鲜花订单10%折扣券</h3><br />
+										<img alt="鲜花折扣券" src="static/img/flower_discount.jpg" />
+										<h3>所需积分: 100</h3>
+										<h3>点击兑换</h3>
+									</a>
+								</li>
+							</div>
+					
+							<!-- 免费配送服务 -->
+							<div class="layui-col-sm3">
+								<li>
+									<a href="javascript:void(0)" onclick="redeemGift('2')">
+										<h3>免费配送服务</h3><br />
+										<img alt="免费配送" src="static/img/free_delivery.jpg" />
+										<h3>所需积分: 200</h3>
+										<h3>点击兑换</h3>
+									</a>
+								</li>
+							</div>
+					
+							<!-- 精美花瓶 -->
+							<div class="layui-col-sm3">
+								<li>
+									<a href="javascript:void(0)" onclick="redeemGift('3')">
+										<h3>精美花瓶</h3><br />
+										<img alt="花瓶" src="static/img/vase.jpg" />
+										<h3>所需积分: 300</h3>
+										<h3>点击兑换</h3>
+									</a>
+								</li>
+							</div>
+					
+							<!-- 会员专属鲜花礼包 -->
+							<div class="layui-col-sm3">
+								<li>
+									<a href="javascript:void(0)" onclick="redeemGift('4')">
+										<h3>会员专属鲜花礼包</h3><br />
+										<img alt="鲜花礼包" src="static/img/flower_package.jpg" />
+										<h3>所需积分: 500</h3>
+										<h3>点击兑换</h3>
+									</a>
+								</li>
+							</div>
+						</ul>
+					</div>					
+					
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-panel layui-anim layui-anim-scale">
+                        <div style="padding: 50px;">
+                            <h2 style="text-align: center;"><strong>积分细则</strong></h2><br />
+                            <p>1. 每消费1元可获得1积分。</p><br />
+        					<p>2. 每成功评价一单可额外获得50积分。</p><br />
+        					<p>3. 每成功邀请一位新用户并完成订单后，可获得200积分奖励。</p><br />
+        					<p>4. 积分有效期为1年，逾期未使用的积分将自动作废。</p><br />
+        					<p>5. 每次订单最多可以使用500积分抵扣。</p><br />
+        					<p>6. 兑换的商品不可退换积分，如遇问题请联系客服。</p><br />
+        					<p>7. 部分活动商品不可使用积分折扣，如促销商品或节日特别款。</p><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/static/js/layui.js"></script>
+        <script>
+            window.onload = function () {
+                var now = new Date();
+                var year = now.getFullYear();
+                var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                var day = ("0" + now.getDate()).slice(-2);
+                var currentDate = year + "-" + month + "-" + day;
+                document.getElementById('datenow').innerText = currentDate;
+            }
+
+            layui.use(function () {
+                var element = layui.element;
+
+                var hashName = 'tabid'; 
+                var layid = location.hash.replace(new RegExp('^#' + hashName + '='), ''); 
+
+                element.tabChange('test-hash', layid);
+                element.on('tab(test-hash)', function (obj) {
+                    location.hash = hashName + '=' + this.getAttribute('lay-id');
+                });
+
+                var fontSizeSlider = document.getElementById('fontSizeSlider');
+                var contentDiv = document.getElementById('content');
+                fontSizeSlider.addEventListener('input', function () {
+                    var newSize = fontSizeSlider.value + '%';
+                    contentDiv.style.fontSize = newSize;
+                });
+            });
+
+            function redeemGift(giftId) {
+                alert("兑换成功！商品ID: " + giftId);
+                // 实际上可以通过AJAX向服务器发送兑换请求
+            }
+        </script>
+</body>
+
+</html>
