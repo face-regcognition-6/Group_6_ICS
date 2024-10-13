@@ -151,7 +151,6 @@ class User(models.Model):
     face_data = models.TextField(null=True, blank=True)
     password = models.CharField(max_length=128)
 
-    # 手动添加 last_login 字段
     last_login = models.DateTimeField(null=True, blank=True)
 
     def update_last_login(self):
